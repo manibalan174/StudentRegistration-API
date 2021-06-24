@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentRegistration.Core\StudentRegistration.Core.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Entity\StudentRegistration.Entity.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Resource\StudentRegistration.Resource.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Service\StudentRegistration.Service.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Utility\StudentRegistration.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

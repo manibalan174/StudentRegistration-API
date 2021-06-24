@@ -1,0 +1,138 @@
+﻿@model StudentRegistration.Core.Modals.LoginDetails
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Login</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .global-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #dfe2e8;
+        }
+
+        .btn {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .login-form {
+            width: 330px;
+            margin: 20px;
+        }
+        .error{
+            color:red
+        }
+    </style>
+
+    <script>
+        function SubmitDetails() {
+            if ($("#LoginDetilasForm").valid()) {
+                LoginCheck()
+            }
+        }
+
+
+
+    $(function() {
+        $("#LoginDetilasForm").validate({
+                rules: {
+                UserName:
+                    {
+                        required: true,
+                        maxlength: 20
+                    },
+                password:
+                    {
+                        required: true,
+                        maxlength: 16
+                    }
+                },
+                messages:
+                {
+                    UserName:
+                    {
+                        required: "User Name is required",
+                        maxlength: " Name should be 20 charcter"
+                    },
+                    password:
+                    {
+                        required: "Password is required",
+                        maxlength: "Password should be 20 charcter"
+                    }
+                }
+            });
+
+    });
+
+
+
+    function LoginCheck() {
+
+            $.ajax({
+                url:"@Url.Action("LoginCheck", "Login")",
+                type: "POST", //send it through get method
+                data: {
+                    UserName: $("#exampleInputuserName").val(),
+                    Password: $("#exampleInputPassword").val(),
+                },
+                success: function (data) {
+                    if (data == "Login Succesully") {
+                        window.location.href = "@Url.Action("StudentDetailsList", "StudentRegistration")";
+                    }
+                },
+                error: function (xhr) {
+                    alert("User name And Password is Incorrect !");
+                }
+            });
+    }
+
+    </script>
+
+</head>
+<body>
+    <div class="global-container">
+        <div class="card login-form">
+            <div class="card-body">
+                <h3 class="card-title text-center font-weight-light">Login to Admin</h3>
+                <div class="card-text">
+                    <form id = "LoginDetilasForm">
+                        @*@using (Html.BeginForm("LoginCheck", "Login", FormMethod.Post, new { @id = "LoginDetilasForm" }))
+                            {*@
+                        <div class="form-group">
+                            <label for="exampleInputuserName">User Name</label>
+                            @*@Html.EditorFor(Modal => Modal.UserName, new { HtmlAttributes = new { @type = "text", @class = "form-control form-control-sm", @maxlength = "30" } })*@
+                            <input type="text" name="UserName" class="form-control form-control-sm" id="exampleInputuserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword">Password</label>
+                            <input type="password" name="password" class="form-control form-control-sm" id="exampleInputPassword">
+                            @*@Html.EditorFor(Modal => Modal.Password, new { HtmlAttributes = new { @type = "password", @class = "form-control form-control-sm", @maxlength = "30" } })*@
+                        </div>
+                        <button type="button" onclick="SubmitDetails()" class="btn btn-primary btn-block">Sign in</button>
+                        @*}*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentRegistration.Core\StudentRegistration.Core.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Utility\StudentRegistration.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

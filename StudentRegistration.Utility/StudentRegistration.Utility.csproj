@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentRegistration.Core\StudentRegistration.Core.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Entity\StudentRegistration.Entity.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Resource\StudentRegistration.Resource.csproj" />
+    <ProjectReference Include="..\StudentRegistration.Service\StudentRegistration.Service.csproj" />
+  </ItemGroup>
+
+</Project>
